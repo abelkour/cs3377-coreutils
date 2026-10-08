@@ -859,6 +859,7 @@ enum
   BLOCK_SIZE_OPTION,
   COLOR_OPTION,
   DEREFERENCE_COMMAND_LINE_SYMLINK_TO_DIR_OPTION,
+  DETAILS_OPTION,
   FILE_TYPE_INDICATOR_OPTION,
   FORMAT_OPTION,
   FULL_TIME_OPTION,
@@ -880,6 +881,7 @@ static struct option const long_options[] =
   {"all", no_argument, NULL, 'a'},
   {"escape", no_argument, NULL, 'b'},
   {"directory", no_argument, NULL, 'd'},
+  {"details", no_argument, NULL, DETAILS_OPTION},
   {"dired", no_argument, NULL, 'D'},
   {"full-time", no_argument, NULL, FULL_TIME_OPTION},
   {"group-directories-first", no_argument, NULL,
@@ -1947,6 +1949,12 @@ decode_switches (int argc, char **argv)
 
         case 'd':
           immediate_dirs = true;
+          break;
+
+        case DETAILS_OPTION:
+          format_opt = long_format;
+          sort_opt = sort_time;
+          sort_reverse = true;
           break;
 
         case 'f':
@@ -5402,6 +5410,10 @@ Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.\n\
       oputs (_("\
   -a, --all\n\
          do not ignore entries starting with .\n\
+"));
+      oputs (_("\
+      --details\n\
+         same as -ltr\n\
 "));
       oputs (_("\
   -A, --almost-all\n\

@@ -149,6 +149,10 @@ done
 set -- $(ls -lut a B c | sed -n 's/.* \([aBc]\)$/\1/p')
 test "$*" = 'c B a' || fail=1
 
+ls -ltr a B c >ltr_output || fail=1
+ls --details a B c >details_output || fail=1
+compare ltr_output details_output || fail=1
+
 # This check is ineffective if:
 #   en_US locale is not on the system.
 #   The system en_US message catalog has a specific TIME_FMT translation,
