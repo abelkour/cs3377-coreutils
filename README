@@ -137,6 +137,8 @@ https://github.com/coreutils/coreutils
 changes made by Amine Belkoura (mxb135330@utdallas.edu)
 I am using this code to teach git concepts in my UT Dallas cs3377
 
+- add a new makefile target called make package
+
 ========================================================================
 
 Copyright (C) 1998-2026 Free Software Foundation, Inc.
